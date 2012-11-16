@@ -253,7 +253,8 @@ namespace ServiceStack.Text.Common
                 }
             }
 
-            var isCollection = typeof(T).IsOrHasGenericInterfaceTypeOf(typeof(ICollection));
+            var isCollection = typeof(T).IsAssignableFrom(typeof(ICollection))
+                || typeof(T).HasInterface(typeof(ICollection));
             if (isCollection)
             {
                 var isDictionary = typeof(T).IsAssignableFrom(typeof(IDictionary))
